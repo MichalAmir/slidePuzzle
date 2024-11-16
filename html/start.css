@@ -1,0 +1,88 @@
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+#background-audio {
+  display: none;
+}
+body, html {
+  height: 100%;
+}
+.parallax {
+  height: 100%; 
+}
+.bg-text {
+  background-color: rgb(146, 136, 136);
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 370px;
+  padding: 20px;
+  text-align: center;
+}
+.bg-text2 {
+  background-color: rgb(146, 136, 136);
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  left: 37%;
+  transform: translate(-50%, 1350%);
+  z-index: 1;
+  width: 270px;
+  padding: 20px;
+  text-align: center;
+   border-radius: 5px;
+}
+.bg-text3 {
+  background-color:rgb(146, 136, 136);
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  left: 63%;
+  transform: translate(-50%, 1350%);
+  z-index: 1;
+  width: 270px;
+  padding: 20px;
+  text-align: center;
+   border-radius: 5px;
+}
+h2{
+  font-size: 30px;
+  text-align: center;
+  font-family: Rubik Black;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+}
+p{
+  font-size: 25px;
+  direction: ltr;
+  color: rgb(146, 136, 136);
+  font-family: Segoe Script;
+  font-weight: bold;
+}
+.box{
+  z-index: 10;
+}
+.lastbox{
+  transform: translate(-0.4%, 100%);
+  
+}

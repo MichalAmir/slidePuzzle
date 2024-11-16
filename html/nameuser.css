@@ -1,0 +1,126 @@
+body{
+    background-image: url(../pictures/תמונה1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.ex1 {
+    display: grid;
+    grid-template-areas:
+        'name1 lastname1'
+        ' phon1  mail1    '
+        'message1 message1';
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+#anounce{
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+}
+.name1 {
+    grid-area: name1;
+}
+
+.lastname1 {
+    grid-area: lastname1;
+}
+
+.phon1 {
+    grid-area: phon1;
+}
+
+.mail1 {
+    grid-area: mail1;
+}
+
+.message1 {
+    grid-area: message1;
+}
+* {
+    box-sizing: border-box
+}
+input[type=text],
+input[type=tel],
+input[type=password],
+input[type=email] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f6f4f4;
+    font-family: Rubik, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 3px;
+}
+input[type=text]:focus,
+input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+hr {
+    border: 1px solid white;
+    margin-bottom: 25px;
+}
+
+button {
+    color: rgb(251, 248, 248);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.7;
+
+}
+
+button:hover {
+    opacity: 1;
+    color: rgb(250, 246, 246);
+}
+
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #0b0b0b;
+}
+.signupbtn{
+    border-style:solid;
+    border-radius:3px;
+    border-color:black;
+}
+.cancelbtn,
+.signupbtn {
+    width: 32%;
+    text-align: center;
+    border-radius: 3px;
+    background-color: black;
+    font-size: 21px;
+}
+
+.container {
+    font-family: Rubik, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    background-color: #fff !important;
+    color: #000 !important;
+    line-height: 1.2;
+    max-width: 800px !important;
+    direction: rtl;
+    border: 1px solid #dadce0 !important;
+    padding: 1em;
+    border-radius: 3px;
+    margin: 0 auto !important;
+    box-shadow: -1px 1px 6px rgb(0 0 0 / 10%);
+    padding: 16px;
+    background-color: white;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

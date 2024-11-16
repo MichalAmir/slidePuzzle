@@ -1,0 +1,106 @@
+body{
+    background-image: url(../pictures/תמונה1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.title{
+    font-size: 50px;
+    font-family: Castellar;
+    margin-left: 38%;
+    color:black;
+}
+.photo1 {
+  grid-area: photo1;
+  height: 210px;
+  max-width: 305px;
+}
+.photo2 {
+  grid-area: photo2;
+  height: 210px;
+  max-width: 305px;
+}
+.photo3 {
+  grid-area: photo3;
+  height: 210px;
+  max-width: 305px;
+}
+.photo4 {
+  grid-area: photo4;
+  height: 210px;
+  max-width: 305px;
+}
+.photo5 {
+  grid-area: photo5;
+  height: 210px;
+  max-width: 315px;
+}
+.photo6 {
+  grid-area: photo6;
+  height: 210px;
+  max-width: 305px;
+}
+.photo7 {
+  grid-area: photo7;
+  height: 210px;
+  max-width: 305px;
+}
+.photo8 {
+  grid-area: photo8;
+  height: 210px;
+  max-width: 305px;
+}
+.gallery {
+  display: grid;
+  grid-gap: 2.5rem;
+  grid-template-areas:
+    'photo1 photo2 photo3 photo4'
+    'photo5 photo6 photo7 photo8';
+  grid-template-columns: 1fr 1fr ;
+  padding-left:5.5%;
+  padding-right: 20%;
+}
+img:hover{
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.container {
+    margin-left: 100%;
+    max-width: 800px;
+    margin: 0 auto; 
+  }
+ .container .content {
+    position: absolute; 
+    bottom: 0; 
+    background: rgb(0, 0, 0);
+    background: rgba(43, 43, 43, 0.5); 
+    color: #f1f1f1;
+    text-align: center;
+    width: 18.60%;
+    padding: 10px;
+  }
+.cr1 .ct1{
+ transform: translate(0.1%, -380%);
+}
+.cr2 .ct2{
+  transform: translate(0.1%, -380%);
+ }
+ .cr3 .ct3{
+  transform: translate(0.1%, -380%);
+ }
+ .cr4 .ct4{
+  transform: translate(0.1%, -380%);
+ }
+ .cr5 .ct5{
+  transform: translate(0.1%, -130%);
+  width: 19.40%;
+ }
+ .cr6 .ct6{
+  transform: translate(0.1%, -127%);
+ }
+ .cr7 .ct7{
+  transform: translate(0.1%, -127%);
+ }
+ .cr8 .ct8{
+  transform: translate(0.1%, -127%);
+  width: 17.10%;
+ }      
+    
