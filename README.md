@@ -11,7 +11,7 @@ Rearrange the shuffled tiles to restore the image — challenge your logic, memo
 ![HTML5](https://img.shields.io/badge/HTML5-orange)
 ![CSS3](https://img.shields.io/badge/CSS3-blue)
 ![JavaScript](https://img.shields.io/badge/JavaScript-yellow)
-![Responsive](https://img.shields.io/badge/Responsive-✅-brightgreen)
+![Responsive](https://img.shields.io/badge/Responsive-Yes-green)
 </div>
 
 ---
