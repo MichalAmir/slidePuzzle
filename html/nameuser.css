@@ -1,4 +1,4 @@
-body{
+/*body{
     background-image: url(../pictures/תמונה1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -123,4 +123,4 @@ button:hover {
     content: "";
     clear: both;
     display: table;
-}
+}/*

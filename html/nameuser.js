@@ -1,4 +1,4 @@
-let loginPage = {
+/*let loginPage = {
     users: [], // מערך שיש בו מידע על המשתמשים
    
     inputFields: { // אובייקט שמכיל את כל השדות הקלט בדף
@@ -111,3 +111,4 @@ let loginPage = {
 };
 
 loginPage.init();// קריאה לפונקציה init שמאתחלת את הדף
+*/

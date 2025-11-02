@@ -1,71 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="homepage.css">
-    <title>Slide Puzzle Game</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../html/homepage.css">
+  <title>Slide Puzzle Game</title>
 </head>
+
 <body>
-    <h1 class="title">Slide Puzzle</h1>
-    <br>
-<div class="gallery">
-        <div class="container cr1">
-           <a href="../coffee/coffee.html"><img  class="photo1" src="../pictures/full/coffee.jpg" alt="קפה"></a>
-            <div class="content ct1">
-              <h1>Coffee</h1>
-            </div>
-          </div>
+  <script src="header.js"></script>
+  <h1 class="title">Slide Puzzle</h1>
+  <br>
+  <div class="gallery">
+    <div class="container cr1">
+      <a href="../slide/coffee/coffee.html"><img class="photo1" src="../slide/full pictures/coffee.jpg" alt="קפה"></a>
+      <div class="content ct1">
+        <h1>Coffee</h1>
+      </div>
+    </div>
 
-          <div class="container cr2">
-            <a href="../dogtwo/dogtwo.html"><img  class="photo2" src="../pictures/full/dog two.jpg" alt="כלב זאב"></a>
-            <div class="content ct2">
-              <h1>Siberian Husky</h1>
-            </div>
-          </div>
+    <div class="container cr2">
+      <a href="../slide/dogtwo/dogtwo.html"><img class="photo2" src="../slide/full pictures/dog two.jpg"
+          alt="כלב זאב"></a>
+      <div class="content ct2">
+        <h1>Siberian Husky</h1>
+      </div>
+    </div>
 
-          <div class="container cr3">
-            <a href="../garden/garden.html"><img  class="photo3" src="../pictures/full/garden.jpg" alt="גינה"></a>
-            <div class="content ct3">
-              <h1>Garden</h1>
-            </div>
-          </div>
+    <div class="container cr3">
+      <a href="../slide/garden/garden.html"><img class="photo3" src="../slide/full pictures/garden.jpg" alt="גינה"></a>
+      <div class="content ct3">
+        <h1>Garden</h1>
+      </div>
+    </div>
 
-          <div class="container cr4">
-            <a href="../HotAirBallon/HotAirBallon.html"><img  class="photo4" src="../pictures/full/Hot Air Balloon.jpg" alt="כדור פורח"></a>
-            <div class="content ct4">
-              <h1>Hot Air Balloon</h1>
-            </div>
-          </div>
+    <div class="container cr4">
+      <a href="../slide/HotAirBallon/HotAirBallon.html"><img class="photo4"
+          src="../slide/full pictures/Hot Air Balloon.jpg" alt="כדור פורח"></a>
+      <div class="content ct4">
+        <h1>Hot Air Balloon</h1>
+      </div>
+    </div>
 
-          <div class="container cr5">
-            <a href="../pariz/pariz.html"><img  class="photo5" src="../pictures/full/pariz.jpg" alt="פריז"></a>
-            <div class="content ct5">
-              <h1>Pariz</h1>
-            </div>
-          </div>
+    <div class="container cr5">
+      <a href="../slide/pariz/pariz.html"><img class="photo5" src="../slide/full pictures/pariz.jpg" alt="פריז"></a>
+      <div class="content ct5">
+        <h1>Pariz</h1>
+      </div>
+    </div>
 
-          <div class="container cr6">
-            <a href="../tower/tower.html"><img  class="photo6" src="../pictures/full/tower.jpg" alt="מגדל"></a>
-            <div class="content ct6">
-              <h1>Tower</h1>
-            </div>
-          </div>
+    <div class="container cr6">
+      <a href="../slide/tower/tower.html"><img class="photo6" src="../slide/full pictures/tower.jpg" alt="מגדל"></a>
+      <div class="content ct6">
+        <h1>Tower</h1>
+      </div>
+    </div>
 
-          <div class="container cr7">
-            <a href="../Penguin/Penguin.html"><img  class="photo7" src="../pictures/full/Penguin.jpg" alt="פנגווין"></a>
-            <div class="content ct7">
-              <h1>Penguin</h1>
-            </div>
-          </div>
+    <div class="container cr7">
+      <a href="../slide/Penguin/Penguin.html"><img class="photo7" src="../slide/full pictures/Penguin.jpg"
+          alt="פנגווין"></a>
+      <div class="content ct7">
+        <h1>Penguin</h1>
+      </div>
+    </div>
 
-          <div class="container cr8">
-            <a href="../dog/dog.html"><img  class="photo8" src="../pictures/full/dog.jpg" alt="כלב"></a>
-            <div class="content ct8">
-              <h1>Dog</h1>
-            </div>
-          </div>
-</div>
+    <div class="container cr8">
+      <a href="../slide/dog/dog.html"><img class="photo8" src="../slide/full pictures/dog.jpg" alt="כלב"></a>
+      <div class="content ct8">
+        <h1>Dog</h1>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      function getScores() { try { return JSON.parse(localStorage.getItem('slidePuzzleScores') || '{}'); } catch (e) { return {}; } }
+      var email = localStorage.getItem('slidePuzzleUser');
+      var avatar = document.getElementById('userAvatar');
+      var nameEl = document.getElementById('userName');
+      var scoreEl = document.getElementById('userScore');
+      var connectLink = document.getElementById('connectLink');
+      if (!avatar || !nameEl) return;
+      if (email) {
+        var scores = getScores(); var total = scores[email] || 0; var display = email;
+        try { var users = JSON.parse(localStorage.getItem('gameuser') || '[]'); var u = users.find(function (x) { return x.email === email; }); if (u && u.name) display = (u.name.split(' ')[0] || email); } catch (e) { }
+        avatar.textContent = (display.charAt(0) || '?').toUpperCase(); nameEl.textContent = display; scoreEl.textContent = total + ' pts'; connectLink.style.display = 'none';
+        if (!document.getElementById('logoutLink')) { var logout = document.createElement('a'); logout.id = 'logoutLink'; logout.href = '#'; logout.textContent = 'Logout'; logout.style.color = '#fff'; logout.style.marginLeft = '8px'; logout.style.textDecoration = 'underline'; logout.addEventListener('click', function (e) { e.preventDefault(); localStorage.removeItem('slidePuzzleUser'); location.reload(); }); document.getElementById('siteHeader').appendChild(logout); }
+      } else { avatar.textContent = '?'; nameEl.textContent = 'Not connected'; scoreEl.textContent = ''; connectLink.style.display = 'inline-block'; }
+    })();
+  </script>
 </body>
+
 </html>
