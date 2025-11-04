@@ -1,114 +1,212 @@
-/*let loginPage = {
-    users: [], // מערך שיש בו מידע על המשתמשים
-   
-    inputFields: { // אובייקט שמכיל את כל השדות הקלט בדף
-        name: {
-            element: document.querySelector('#myName'), // אלמנט השדה להזנת השם
-            options: [] // מערך שמכיל אפשרויות קודמות שהוזנו לשדה
-        },
-        lastName: {
-            element: document.querySelector('#myLastName'),// אלמנט השדה להזנת שם המשפחה
-            options: []
-        },
-        email: {
-            element: document.querySelector('#myEmail'),// אלמנט השדה להזנת כתובת הדוא"ל
-            options: []
-        },
-        phone: {
-            element: document.querySelector('#myPhone'),// אלמנט השדה להזנת מספר הטלפון
-            options: []
-        },
-        password: {
-            element: document.querySelector('#myPassword'),// אלמנט השדה להזנת הסיסמה
-            options: []
-        }
+const loginPage = {
+    users: [],
+    inputFields: {
+        name: { element: document.getElementById('myName'), options: [] },
+        lastName: { element: document.getElementById('myLastName'), options: [] },
+        email: { element: document.getElementById('myEmail'), options: [] },
+        phone: { element: document.getElementById('myPhone'), options: [] },
+        password: { element: document.getElementById('myPassword'), options: [] },
     },
-    login: document.querySelector('.signupbtn'),// אלמנט הכפתור להתחברות או הרישום
+    login: document.querySelector('.signupbtn'),
 
-    init: function() { // פונקציה המאתחלת את הדף
-        this.login.addEventListener('click', this.loginUser.bind(this));
+    init() {
+        if (this.login) {
+            this.login.addEventListener('click', this.loginUser.bind(this));
+        }
         this.loadPreviousOptions();
         this.setupInputFields();
     },
 
-    loginUser: function(event) { // פונקציה המתבצעת בעת לחיצה על הכפתור להתחברות או הרישום
-        event.preventDefault(); // מונע מלעבור לקישור אחר
- // קבלת ערכי השדות המוזנים על ידי המשתמש
-        let userName = this.inputFields.name.element.value;
-        let userLastName = this.inputFields.lastName.element.value;
-        let userEmail = this.inputFields.email.element.value;
-        let userPhone = this.inputFields.phone.element.value;
-        let userPassword = this.inputFields.password.element.value;
+    async loginUser(event) {
+        event.preventDefault();
+        this.clearAllErrors();
 
-        let str = localStorage.getItem('gameuser');// קבלת המידע השמור בקובץ המקומי gameuser
-        if (str !== null) { // בדיקה אם יש מידע שמור
-            this.users = JSON.parse(str);// טעינת המשתמשים מהמידע השמור
-            let userFound = false;
- // חיפוש האם המשתמש קיים במערכת על ידי עבור כל משתמש במערך
-            for (let i = 0; i < this.users.length; i++) {
-                if (this.users[i].name === userName && this.users[i].lastName === userLastName &&
-                    this.users[i].email === userEmail && this.users[i].phone === userPhone &&
-                    this.users[i].password === userPassword) {
-                    document.querySelector('#anounce').innerText = 'ברוך שובך';
-                    userFound = true;
-                    break;
+        const btn = this.login;
+        btn.disabled = true; // נועל זמנית בזמן בדיקה
+
+        const userName = this.inputFields.name.element.value.trim();
+        const userLastName = this.inputFields.lastName.element.value.trim();
+        const userEmail = this.inputFields.email.element.value.trim().toLowerCase();
+        const userPhone = this.inputFields.phone.element.value.trim();
+        const userPassword = this.inputFields.password.element.value.trim();
+
+        // בדיקות שגיאה
+        if (!this.validateEmail(userEmail)) return this.setFieldError('email', 'הזן כתובת דוא"ל תקינה', btn);
+        if (!this.isValidName(userName)) return this.setFieldError('name', 'הזן שם תקין (2 אותיות ומעלה)', btn);
+        if (!this.isValidName(userLastName)) return this.setFieldError('lastName', 'הזן שם משפחה תקין', btn);
+        if (!this.isValidPhone(userPhone)) return this.setFieldError('phone', 'מספר טלפון חייב להתחיל ב-05 ולהכיל 10 ספרות', btn);
+        if (!this.isValidPassword(userPassword)) return this.setFieldError('password', 'הסיסמה חייבת לפחות 6 תווים, כולל אות ומספר', btn);
+
+        try {
+            const enteredHash = await this.hashPassword(userPassword);
+            let stored = localStorage.getItem('gameuser');
+            this.users = stored ? JSON.parse(stored) : [];
+
+            const existing = this.users.find(u =>
+                u.email?.toLowerCase() === userEmail &&
+                u.name?.toLowerCase() === userName.toLowerCase() &&
+                u.lastName?.toLowerCase() === userLastName.toLowerCase() &&
+                u.phone === userPhone
+            );
+
+            if (existing) {
+                const matchPassword = existing.password === enteredHash || existing.password === userPassword;
+                if (matchPassword) {
+                    existing.password = enteredHash;
+                    localStorage.setItem('gameuser', JSON.stringify(this.users));
+                    localStorage.setItem('slidePuzzleUser', userEmail);
+                    this.ensureUserScore(userEmail);
+                    this.showRegistrationMessage('Welcome back!', userName || userEmail);
+                    return;
+                } else {
+                    return this.setFieldError('password', 'הסיסמה שגויה, נסה שוב', btn);
                 }
             }
-// אם המשתמש לא נמצא, נוסיף אותו כמשתמש חדש
-            if (!userFound) {
-                this.addNewUser(userName, userLastName, userEmail, userPhone, userPassword);
-            }
-        } else { // אם אין מידע שמור, נוסיף את המשתמש כמשתמש חדש
-            this.addNewUser(userName, userLastName, userEmail, userPhone, userPassword);
+
+            await this.addNewUser(userName, userLastName, userEmail, userPhone, userPassword);
+        } catch (e) {
+            alert('אירעה שגיאה בלתי צפויה. נסה שוב מאוחר יותר.');
+        } finally {
+            btn.disabled = false; // מאפשר ניסיון חוזר
         }
     },
 
-    addNewUser: function(name, lastName, email, phone, password) { // הוספת משתמש חדש למערכת
-        let user = {
-            name: name,
-            lastName: lastName,
-            email: email,
-            phone: phone,
-            password: password
-        };
-        this.users.push(user);// הוספת המשתמש למערך המשתמשים
-        localStorage.setItem('gameuser', JSON.stringify(this.users));
-        document.querySelector('#anounce').innerText = 'נרשמת בהצלחה';
+    async addNewUser(name, lastName, email, phone, password) {
+        const users = JSON.parse(localStorage.getItem('gameuser') || '[]');
+        const exists = users.find(u => u.email?.toLowerCase() === email.toLowerCase());
+        if (exists) {
+            this.setFieldError('email', 'כתובת דוא"ל זו כבר רשומה. התחבר או השתמש באחרת');
+            return;
+        }
+
+        const hashed = await this.hashPassword(password);
+        const user = { name, lastName, email, phone, password: hashed };
+        users.push(user);
+        localStorage.setItem('gameuser', JSON.stringify(users));
+        localStorage.setItem('slidePuzzleUser', email);
+        this.ensureUserScore(email);
+        this.showRegistrationMessage('נרשמת בהצלחה!', name || email);
     },
 
-    loadPreviousOptions: function() {//פונקציה שבודקת האם הקלט קיים באפשרויות אם לא מוסיף אותו לאפשרויות
-        let storedOptions = localStorage.getItem('inputOptions');
-        if (storedOptions !== null) {
-            let options = JSON.parse(storedOptions);
-            for (let fieldName in options) {
-                if (fieldName in this.inputFields) {
-                    this.inputFields[fieldName].options = options[fieldName];
+    setupInputFields() {
+        for (let field in this.inputFields) {
+            const fieldObj = this.inputFields[field];
+            fieldObj.element.addEventListener('input', () => {
+                const value = fieldObj.element.value;
+                if (!fieldObj.options.includes(value)) {
+                    fieldObj.options.push(value);
+                    this.saveOptions();
                 }
-            }
+            });
         }
     },
 
-    saveOptions: function() {
-        let options = {};
-        for (let fieldName in this.inputFields) {
-            options[fieldName] = this.inputFields[fieldName].options;
+    loadPreviousOptions() {
+        try {
+            const options = JSON.parse(localStorage.getItem('inputOptions') || '{}');
+            for (let field in options) {
+                if (this.inputFields[field]) {
+                    this.inputFields[field].options = options[field];
+                }
+            }
+        } catch (e) { }
+    },
+
+    saveOptions() {
+        const options = {};
+        for (let field in this.inputFields) {
+            options[field] = this.inputFields[field].options;
         }
         localStorage.setItem('inputOptions', JSON.stringify(options));
     },
 
-    setupInputFields: function() {
-        for (let fieldName in this.inputFields) {
-            let field = this.inputFields[fieldName];
-            field.element.addEventListener('input', function() {
-                let value = field.element.value;
-                if (!field.options.includes(value)) {
-                    field.options.push(value);
-                    this.saveOptions();
-                }
-            }.bind(this));
+    validateEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); },
+    isValidName(name) { return /^[א-תa-zA-Z]{2,30}$/.test(name); },
+    isValidPhone(phone) { return /^05\d{8}$/.test(phone); },
+    isValidPassword(password) { return /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/.test(password); },
+
+    async hashPassword(password) {
+        try {
+            const enc = new TextEncoder();
+            const data = enc.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        } catch (e) { return password; }
+    },
+
+    ensureUserScore(email) {
+        const key = 'slidePuzzleScores';
+        const scores = JSON.parse(localStorage.getItem(key) || '{}');
+        if (!(email in scores)) {
+            scores[email] = 0;
+            localStorage.setItem(key, JSON.stringify(scores));
         }
-    }
+    },
+
+    setFieldError(fieldId, message, button) {
+        const el = document.getElementById(`error-${fieldId}`);
+        if (el) el.textContent = message;
+        if (button) button.disabled = false; // פותח את הכפתור לניסיון חוזר
+    },
+
+    clearAllErrors() {
+        document.querySelectorAll('.error-message').forEach(e => e.textContent = '');
+    },
+
+    showRegistrationMessage(message, displayName) {
+        if (document.getElementById('reg-overlay')) return;
+        const overlay = document.createElement('div');
+        overlay.id = 'reg-overlay';
+        Object.assign(overlay.style, {
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.4)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 99999,
+            opacity: 0,
+            transition: 'opacity 220ms',
+        });
+
+        const card = document.createElement('div');
+        Object.assign(card.style, {
+            width: 'min(95%,520px)',
+            background: '#fff',
+            borderRadius: '12px',
+            padding: '20px',
+            textAlign: 'center',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+        });
+
+        const title = document.createElement('h2');
+        title.textContent = message;
+
+        const info = document.createElement('p');
+        info.textContent = displayName;
+
+        const btn = document.createElement('button');
+        btn.textContent = 'המשך';
+        Object.assign(btn.style, {
+            padding: '10px 16px',
+            borderRadius: '6px',
+            background: 'linear-gradient(90deg,#1976d2,#42a5f5)',
+            color: '#fff',
+            border: 'none',
+            cursor: 'pointer',
+        });
+        btn.addEventListener('click', () => {
+            overlay.style.opacity = '0';
+            setTimeout(() => { window.location.href = 'start.html'; }, 250);
+        });
+
+        card.append(title, info, btn);
+        overlay.appendChild(card);
+        document.body.appendChild(overlay);
+        setTimeout(() => { overlay.style.opacity = '1'; }, 20);
+    },
 };
 
-loginPage.init();// קריאה לפונקציה init שמאתחלת את הדף
-*/
+window.addEventListener('DOMContentLoaded', () => loginPage.init());
+

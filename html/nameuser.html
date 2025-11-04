@@ -1,52 +1,54 @@
-<!-- <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="nameuser.css">
-     <title>Slide Puzzle Game</title>
- </head>
- <body>
-     <br>
-     <br>
-     <br>
-     <form id="loginForm">
-         <div class="container">
-             <h1>התחברות</h1>
-             <p>שדות המסומנים ב-* הינם שדות חובה</p>
-             <hr>
-             <div id="anounce"></div>
-             <br>
-             <div id="login">
-                 <div class="ex1">
-                     <div class="name1">
-                         <label for="email"></label>
-                         <input id="myName" type="text" placeholder="שם פרטי" name="email" required>
-                     </div>
-                     <div class="lastname1">
-                         <label for="psw"></label>
-                         <input id="myLastName" type="text" placeholder="שם משפחה" name="psw" required>
-                     </div>
-                     <div class="phon1">
-                         <label for="psw-repeat"></label>
-                         <input id="myPhone" type="tel" placeholder="מספר טלפון" name="psw-repeat" required>
-                     </div>
-                     <div class="mail1">
-                         <label for="doal"></label>
-                         <input id="myEmail" type="email" placeholder="דוא''ל" name="doal" required>
-                     </div>
-                     <div class="message1">
-                         <label for="message"></label>
-                         <input id="myPassword" type="password" placeholder="סיסמא" name="message" required>
-                     </div>
-                 </div>
-                 <div class="clearfix">
-                     <button type="submit" class="signupbtn">התחבר/י עכשיו</button>
-                 </div>
-             </div>
-         </div>
-     </form>
-     <script src="nameuser.js"></script>
- </body>
- </html> -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="nameuser.css" />
+    <link rel="stylesheet" href="header.css" />
+</head>
+
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-image"></div>
+
+        <div class="auth-form">
+            <div class="container">
+                <h1>Welcome!</h1>
+                <p>Please fill in all fields</p>
+                <hr />
+                <div id="anounce"></div>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <div style="width: 100%;">
+                            <input id="myName" type="text" placeholder="First Name" required />
+                            <span class="error-message" id="error-name"></span>
+                        </div>
+                        <div style="width: 100%;">
+                            <input id="myLastName" type="text" placeholder="Last Name" required />
+                            <span class="error-message" id="error-lastName"></span>
+                        </div>
+                    </div>
+
+                    <input id="myPhone" type="tel" placeholder="0501234567" required />
+                    <span class="error-message" id="error-phone"></span>
+
+                    <input id="myEmail" type="email" placeholder="address@gmail.com" required />
+                    <span class="error-message" id="error-email"></span>
+
+                    <input id="myPassword" type="password" placeholder="Password at least 6 alphanumeric characters"
+                        required />
+                    <span class="error-message" id="error-password"></span>
+
+                    <button type="submit" class="signupbtn">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="header.js"></script>
+    <script src="nameuser.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .progress-bar {
+        width: 100%;
+        height: 20px;
+        background-color: #ccc;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        overflow: hidden;
+    }
+
+    .progress-bar-filled {
+        width: 100%;
+        height: 100%;
+        background-color: #ff4800;
+        animation: progressAnimation 300s linear forwards;
+        transform-origin: left;
+    }
+
+    @keyframes progressAnimation {
+        0% {
+            width: 0%;
+        }
+
+        100% {
+            width: 100%;
+        }
+    }
+
+    .site-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 12px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #3b3b3b, #222);
+        color: #fff;
+        font-family: Segoe UI, Roboto, Arial;
+        min-width: 180px
+    }
+
+    .site-header .avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #1976d2, #42a5f5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        color: #fff
+    }
+
+    .site-header .meta {
+        display: flex;
+        flex-direction: column;
+        min-width: 80px
+    }
+
+    .site-header .meta .name {
+        font-weight: 700;
+        font-size: 14px
+    }
+
+    .site-header .meta .score {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.9);
+        opacity: 0.95
+    }
+
+    .site-header a {
+        color: #fff;
+        text-decoration: underline;
+        font-size: 13px
+    }
+</style>
+
+<body>
+    <script src="header.js"></script>
+    <div class="progress-bar"></div>
+</body>
+<script>
+    window.addEventListener('DOMContentLoaded', function () {
+        var progressBar = document.querySelector('.progress-bar');
+        var progressBarFilled = document.createElement('div');
+        progressBarFilled.classList.add('progress-bar-filled');
+        progressBar.appendChild(progressBarFilled);
+
+        var duration = 300;
+
+        setTimeout(function () {
+        }, duration * 1000);
+    });
+</script>
+<script>
+    (function () {
+        function getScores() { try { return JSON.parse(localStorage.getItem('slidePuzzleScores') || '{}'); } catch (e) { return {}; } }
+        var email = localStorage.getItem('slidePuzzleUser');
+        var avatar = document.getElementById('userAvatar');
+        var nameEl = document.getElementById('userName');
+        var scoreEl = document.getElementById('userScore');
+        var connectLink = document.getElementById('connectLink');
+        if (!avatar || !nameEl) return;
+        if (email) {
+            var scores = getScores(); var total = scores[email] || 0; var display = email;
+            try { var users = JSON.parse(localStorage.getItem('gameuser') || '[]'); var u = users.find(function (x) { return x.email === email; }); if (u && u.name) display = (u.name.split(' ')[0] || email); } catch (e) { }
+            avatar.textContent = (display.charAt(0) || '?').toUpperCase(); nameEl.textContent = display; scoreEl.textContent = total + ' pts'; connectLink.style.display = 'none';
+            if (!document.getElementById('logoutLink')) { var logout = document.createElement('a'); logout.id = 'logoutLink'; logout.href = '#'; logout.textContent = 'Logout'; logout.style.color = '#fff'; logout.style.marginLeft = '8px'; logout.style.textDecoration = 'underline'; logout.addEventListener('click', function (e) { e.preventDefault(); localStorage.removeItem('slidePuzzleUser'); location.reload(); }); document.getElementById('siteHeader').appendChild(logout); }
+        } else { avatar.textContent = '?'; nameEl.textContent = 'Not connected'; scoreEl.textContent = ''; connectLink.style.display = 'inline-block'; }
+    })();
+</script>
+
+</html>

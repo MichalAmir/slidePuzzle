@@ -1,126 +1,105 @@
-/*body{
-    background-image: url(../pictures/תמונה1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.ex1 {
-    display: grid;
-    grid-template-areas:
-        'name1 lastname1'
-        ' phon1  mail1    '
-        'message1 message1';
-    gap: 20px;
-    grid-template-columns: 1fr 1fr;
-}
-#anounce{
-    color: red;
-    font-size: 25px;
-    font-weight: bold;
-}
-.name1 {
-    grid-area: name1;
-}
-
-.lastname1 {
-    grid-area: lastname1;
-}
-
-.phon1 {
-    grid-area: phon1;
-}
-
-.mail1 {
-    grid-area: mail1;
-}
-
-.message1 {
-    grid-area: message1;
-}
 * {
-    box-sizing: border-box
-}
-input[type=text],
-input[type=tel],
-input[type=password],
-input[type=email] {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: inline-block;
-    border: none;
-    background: #f6f4f4;
-    font-family: Rubik, sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 3px;
-}
-input[type=text]:focus,
-input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
+    box-sizing: border-box;
 }
 
-hr {
-    border: 1px solid white;
-    margin-bottom: 25px;
+body {
+    margin: 0;
+    font-family: "Segoe UI", Rubik, sans-serif;
 }
 
-button {
-    color: rgb(251, 248, 248);
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.7;
-
+.auth-wrapper {
+    display: flex;
+    min-height: 100vh;
 }
 
-button:hover {
-    opacity: 1;
-    color: rgb(250, 246, 246);
+.auth-image {
+    width: 50%;
+    background-image: url('../slide/backround.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-.cancelbtn {
-    padding: 14px 20px;
-    background-color: #0b0b0b;
-}
-.signupbtn{
-    border-style:solid;
-    border-radius:3px;
-    border-color:black;
-}
-.cancelbtn,
-.signupbtn {
-    width: 32%;
-    text-align: center;
-    border-radius: 3px;
-    background-color: black;
-    font-size: 21px;
+.auth-form {
+    width: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
 }
 
 .container {
-    font-family: Rubik, sans-serif;
-    font-weight: 400;
-    font-size: 20px;
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
     text-align: center;
-    background-color: #fff !important;
-    color: #000 !important;
-    line-height: 1.2;
-    max-width: 800px !important;
-    direction: rtl;
-    border: 1px solid #dadce0 !important;
-    padding: 1em;
-    border-radius: 3px;
-    margin: 0 auto !important;
-    box-shadow: -1px 1px 6px rgb(0 0 0 / 10%);
-    padding: 16px;
-    background-color: white;
 }
 
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}/*
+h1 {
+    margin-bottom: 10px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    transition: border 0.2s ease;
+    text-align: left;
+    direction: ltr;
+}
+
+input:focus {
+    border-color: #928888;
+    outline: none;
+    background-color: #fff;
+}
+
+.signupbtn {
+    margin-top: 10px;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #928888, #928888);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.signupbtn:hover {
+    opacity: 0.9;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: block;
+    text-align: right;
+}
