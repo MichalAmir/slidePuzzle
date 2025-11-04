@@ -14,7 +14,6 @@ Shuffle, solve, and beat the clock across devices.
 ![Responsive](https://img.shields.io/badge/Responsive-Yes-green)
 
 </div>
-
 ---
 
 ## 🎯 About the Project
@@ -71,8 +70,8 @@ Built completely with **Vanilla JavaScript**, the game includes real-time valida
 ## ⚙️ Run Locally
 
 ```bash
-git clone https://github.com/mrf182/SlidePuzzle.git
+git clone https://github.com/MichalAmir/slidePuzzle/
 cd SlidePuzzle
-# Open index.html in your browser (double-click or drag into browser)
+# Open start.html in your browser (double-click or drag into browser)
 
 
