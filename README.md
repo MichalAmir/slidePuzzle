@@ -5,7 +5,7 @@ A responsive, lightweight sliding puzzle built with pure **HTML, CSS, and JavaSc
 No frameworks, no dependencies – just logic, interactivity, and clean design.  
 Shuffle, solve, and beat the clock across devices.
 
-[![Live Demo](https://img.shields.io/badge/🎮-Play_Live_Game-green?style=for-the-badge)](https://mrf182.github.io/SlidePuzzle/)
+[![Live Demo](https://img.shields.io/badge/🎮-Play_Live_Game-green?style=for-the-badge)](https://MichalAmir.github.io/slidePuzzle/)
 
 ![HTML5](https://img.shields.io/badge/HTML5-orange)
 ![CSS3](https://img.shields.io/badge/CSS3-blue)
@@ -102,7 +102,7 @@ Built completely with **Vanilla JavaScript**, the game includes real-time valida
 ## ⚙️ Run Locally
 
 ```bash
-git clone https://github.com/mrf182/SlidePuzzle.git
+git clone https://github.com/MichalAmir/slidePuzzle.git
 cd SlidePuzzle
 # Open index.html in your browser (double-click or drag into browser)
 
