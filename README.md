@@ -6,7 +6,6 @@ No frameworks, no dependencies – just logic, interactivity, and clean design.
 Shuffle, solve, and beat the clock across devices.
 
 [![Live Demo](https://img.shields.io/badge/🎮-Play_Live_Game-green?style=for-the-badge)](https://mrf182.github.io/SlidePuzzle/)
-[![Watch Demo](https://img.shields.io/badge/📽️-Watch_Demo-grey?style=for-the-badge)](https://youtu.be/YOUR_VIDEO_LINK)
 
 ![HTML5](https://img.shields.io/badge/HTML5-orange)
 ![CSS3](https://img.shields.io/badge/CSS3-blue)
@@ -14,24 +13,55 @@ Shuffle, solve, and beat the clock across devices.
 ![Responsive](https://img.shields.io/badge/Responsive-Yes-green)
 
 </div>
+
+---
+
+## 📚 Table of Contents
+
+- [ About the Project](#-about-the-project)
+- [ Live Gameplay](#-live-gameplay)
+- [ Solved Puzzle Screenshot](#️-solved-puzzle-screenshot)
+- [ Key Features](#-key-features)
+- [ Tech Stack](#-tech-stack)
+- [ Game Logic Highlights](#-game-logic-highlights)
+- [ Planned Enhancements](#-planned-enhancements)
+- [ Run Locally](#️-run-locally)
+
 ---
 
 ## 🎯 About the Project
 
-**Slide Puzzle** is a browser-based logic game where you slide image tiles to restore the original picture. The puzzle is randomized at the start, and only legal (adjacent) moves are allowed.
+**Slide Puzzle** is a browser-based logic game where you slide image tiles to restore the original picture.  
+The puzzle is randomized at the start, and only legal (adjacent) moves are allowed.
 
-Built completely with **Vanilla JavaScript**, the game includes real-time validation, a win condition check, and mobile-friendly UI – all without using external libraries or frameworks.
+Built completely with **Vanilla JavaScript**, the game includes real-time validation, a win condition check, and a mobile-friendly UI – all without using external libraries or frameworks.
+
+---
+
+## 🎥 Live Gameplay
+
+<p align="center">
+  <img src="./assets/media/slidepuzzle_demo.gif" width="600" alt="Slide Puzzle Gameplay">
+</p>
+
+---
+
+## 🖼️ Solved Puzzle Screenshot
+
+<p align="center">
+  <img src="./assets/media/solved_puzzle.png" width="500" alt="Solved Puzzle Screenshot">
+</p>
 
 ---
 
 ## 🧩 Key Features
 
-- 🔀 **Auto-shuffle:** Puzzle tiles are shuffled automatically at game start  
-- ⏳ **Smart timer:** Timer starts only after the first move  
-- 🎯 **Valid moves only:** Only adjacent tiles can be moved into the empty space  
-- 🏁 **Win detection:** Shows a popup when the puzzle is completed  
-- 🔁 **Instant restart:** Quick Shuffle and Restart buttons  
-- 📱 **Fully responsive:** Optimized for both mobile and desktop devices
+- **Auto-shuffle:** Puzzle tiles are shuffled automatically at game start  
+- **Smart timer:** Timer starts only after the first move  
+- **Valid moves only:** Only adjacent tiles can be moved into the empty space  
+- **Win detection:** Shows a popup when the puzzle is completed  
+- **Instant restart:** Quick Shuffle and Restart buttons  
+- **Fully responsive:** Optimized for both mobile and desktop devices
 
 ---
 
@@ -40,6 +70,8 @@ Built completely with **Vanilla JavaScript**, the game includes real-time valida
 - **Languages:** HTML5, CSS3, JavaScript (ES6)
 - **Layout:** CSS Grid, Flexbox
 - **Deployment:** GitHub Pages
+
+---
 
 ## 🧠 Game Logic Highlights
 
@@ -55,19 +87,24 @@ Built completely with **Vanilla JavaScript**, the game includes real-time valida
 - **No External Libraries:**  
   The game is built entirely with vanilla JavaScript – all logic and DOM manipulation is handwritten.
 
+---
 
 ## 🚀 Planned Enhancements
 
-- 🔢 **Dynamic Grid Sizes:** Add support for 4x4 and 5x5 modes with scalable logic and layout adjustments.
-- 🖼️ **Custom Image Upload:** Allow users to upload an image and generate a personalized puzzle.
-- 💾 **Save & Resume:** Use `localStorage` to store the puzzle state and elapsed time.
-- ⏱️ **Challenge Mode:** Introduce timed and move-limited modes to increase difficulty.
-- 🔊 **Audio Feedback:** Add optional sound effects with mute toggle for UX enhancement.
-
+- **Dynamic Grid Sizes:** Add support for 4x4 and 5x5 modes with scalable logic and layout adjustments.
+- **Custom Image Upload:** Allow users to upload an image and generate a personalized puzzle.
+- **Save & Resume:** Use `localStorage` to store the puzzle state and elapsed time.
+- **Challenge Mode:** Introduce timed and move-limited modes to increase difficulty.
+- **Audio Feedback:** Add optional sound effects with mute toggle for UX enhancement.
 
 ---
 
 ## ⚙️ Run Locally
+
+```bash
+git clone https://github.com/mrf182/SlidePuzzle.git
+cd SlidePuzzle
+# Open index.html in your browser (double-click or drag into browser)
 
 ```bash
 git clone https://github.com/MichalAmir/slidePuzzle/
