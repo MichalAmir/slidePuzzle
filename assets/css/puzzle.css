@@ -1,82 +1,148 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    color: black;
-    background-image: url(../slide/backround.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  color: black;
+  background-image: url(../media/backround.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
 }
 
 #title {
-    font-size: 50px;
-    font-family: Castellar;
+  font-size: clamp(24px, 5vw, 50px);
+  font-family: Castellar, serif;
+  margin-bottom: 1vh;
+}
+
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vh;
+  width: 100%;
+  max-height: calc(100vh - 80px);
 }
 
 #board {
-    width: 750px;
-    height: 520px;
-    border: 10px solid rgba(146, 107, 49, 0.703);
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: min(90vw, 90vh);
+  height: auto;
+  aspect-ratio: 750 / 520;
+  border: 0.3vw solid rgba(255, 243, 224, 0.703);
 }
 
 #board img {
-    width: 185.9px;
-    height: 129px;
-    border: 1px solid rgba(146, 107, 49, 0.703);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0.1vw solid rgba(255, 243, 224, 0.703);
+  display: block;
 }
 
-body,
-#shuffle {
-    font-family: 'Cinzel', serif;
-    font-size: 14pt;
+#controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #shuffle {
-    color: white;
-    background-color: rgba(146, 107, 49, 0.703);
-    font-size: 32px;
-    border-radius: 50px;
-    width: 240px;
-    height: 140px;
-    line-height: 60px;
-    text-align: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(190%, -160%);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    text-transform: uppercase;
-    border: none;
+  font-size: clamp(18px, 2.5vw, 28px);
+  color: grey;
+  background-color: rgba(255, 243, 224, 0.703);
+  border-radius: 50px;
+  padding: 2vh 5vh;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#shuffle:hover {
+  transform: scale(1.05);
 }
 
 .progress-bar {
-    width: 100%;
-    height: 20px;
-    background-color: #ccc;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    overflow: hidden;
+  width: 100%;
+  height: 20px;
+  background-color: #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  overflow: hidden;
 }
 
-.progress-bar-filled {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(146, 107, 49, 0.703);
-    animation: progressAnimation 300s linear forwards;
-    transform-origin: left;
+.progress-bar-filled.animate {
+  animation: progressAnimation 60s linear forwards;
 }
 
 @keyframes progressAnimation {
-    0% {
-        width: 0%;
-    }
+  0% {
+    width: 0%;
+  }
 
-    100% {
-        width: 100%;
-    }
+  100% {
+    width: 100%;
+  }
+}
+
+
+button {
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+button.primary {
+  background: linear-gradient(90deg, #ccc, #b0b0b0);
+  color: white;
+  border: none;
+  margin-top: 2vh;
+  margin-left: 4vh;
+}
+
+button.outline {
+  background: transparent;
+  color: #ccc;
+  border: 2px solid #ccc;
+  margin-top: 2vh;
+  margin-left: 4vh;
+}
+
+button.neutral {
+  background: #e0e0e0;
+  color: #222;
+  border: none;
+   margin-top: 2vh;
+  margin-left: 4vh;
 }

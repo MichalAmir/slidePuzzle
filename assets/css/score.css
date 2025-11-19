@@ -65,7 +65,7 @@
     justify-content: flex-start;
 }
 
-.profile-card .progress-bar {
+.profile-card .progress-level {
     background: #f0f0f0;
     border-radius: 6px;
     height: 8px;

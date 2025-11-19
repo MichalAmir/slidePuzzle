@@ -2,53 +2,53 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
-    <link rel="stylesheet" href="nameuser.css" />
-    <link rel="stylesheet" href="header.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="../css/nameuser.css" />
+  <link rel="stylesheet" href="../css/score.css" />
 </head>
 
 <body>
-    <div class="auth-wrapper">
-        <div class="auth-image"></div>
+  <div class="auth-wrapper">
+    <div class="auth-image"></div>
 
-        <div class="auth-form">
-            <div class="container">
-                <h1>Welcome!</h1>
-                <p>Please fill in all fields</p>
-                <hr />
-                <div id="anounce"></div>
-                <form id="loginForm">
-                    <div class="input-group">
-                        <div style="width: 100%;">
-                            <input id="myName" type="text" placeholder="First Name" required />
-                            <span class="error-message" id="error-name"></span>
-                        </div>
-                        <div style="width: 100%;">
-                            <input id="myLastName" type="text" placeholder="Last Name" required />
-                            <span class="error-message" id="error-lastName"></span>
-                        </div>
-                    </div>
-
-                    <input id="myPhone" type="tel" placeholder="0501234567" required />
-                    <span class="error-message" id="error-phone"></span>
-
-                    <input id="myEmail" type="email" placeholder="address@gmail.com" required />
-                    <span class="error-message" id="error-email"></span>
-
-                    <input id="myPassword" type="password" placeholder="Password at least 6 alphanumeric characters"
-                        required />
-                    <span class="error-message" id="error-password"></span>
-
-                    <button type="submit" class="signupbtn">Login</button>
-                </form>
+    <div class="auth-form">
+      <div class="container">
+        <h1>Welcome!</h1>
+        <p>Please fill in all fields</p>
+        <hr />
+        <div id="anounce"></div>
+        <form id="loginForm">
+          <div class="input-group">
+            <div style="width: 100%;">
+              <input id="myName" type="text" placeholder="First Name" required />
+              <span class="error-message" id="error-name"></span>
             </div>
-        </div>
-    </div>
+            <div style="width: 100%;">
+              <input id="myLastName" type="text" placeholder="Last Name" required />
+              <span class="error-message" id="error-lastName"></span>
+            </div>
+          </div>
 
-    <script src="header.js"></script>
-    <script src="nameuser.js"></script>
+          <input id="myPhone" type="tel" placeholder="0501234567" required />
+          <span class="error-message" id="error-phone"></span>
+
+          <input id="myEmail" type="email" placeholder="address@gmail.com" required />
+          <span class="error-message" id="error-email"></span>
+
+          <input id="myPassword" type="password"
+            placeholder="Password at least 6 alphanumeric characters" required />
+          <span class="error-message" id="error-password"></span>
+
+          <button type="submit" class="signupbtn">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/score.js"></script>
+  <script src="../js/nameuser.js"></script>
 </body>
 
 </html>

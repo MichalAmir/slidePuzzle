@@ -14,7 +14,7 @@ body {
 
 .auth-image {
     width: 50%;
-    background-image: url('../slide/backround.jpg');
+    background-image: url('../media/backgroundUser.jpg');
     background-size: cover;
     background-position: center;
 }
