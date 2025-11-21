@@ -106,9 +106,4 @@ git clone https://github.com/MichalAmir/slidePuzzle.git
 cd SlidePuzzle
 # Open index.html in your browser (double-click or drag into browser)
 
-```bash
-git clone https://github.com/MichalAmir/slidePuzzle/
-cd SlidePuzzle
-# Open start.html in your browser (double-click or drag into browser)
-
 
