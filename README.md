@@ -101,6 +101,7 @@ Built completely with **Vanilla JavaScript**, the game includes real-time valida
 
 ## ⚙️ Run Locally
 
-git clone https://github.com/MichalAmir/slidePuzzle.git
+```bash
+git clone https://github.com/mrf182/SlidePuzzle.git
 cd SlidePuzzle
 # Open index.html in your browser (double-click or drag into browser)
